@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plant_app/constants.dart';
 import 'package:plant_app/screens/home/components/header_with_searchbox..dart';
+import 'package:plant_app/screens/home/components/title_with_more_bbtn.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -11,6 +12,7 @@ class Body extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           HeaderWithSearchBox(size: size),
+          TitleWithMoreBtn(title: "Recomended", press: () {}),
           SizedBox(height: kDefaultPadding),
         ],
       ),
