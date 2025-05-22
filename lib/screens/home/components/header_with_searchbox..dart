@@ -4,9 +4,16 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constants.dart';
 
 class HeaderWithSearchBox extends StatelessWidget {
-  const HeaderWithSearchBox({super.key, required this.size});
+  const HeaderWithSearchBox({
+    super.key,
+    required this.size,
+    required this.address,
+    required this.onAddressTap,
+  });
 
   final Size size;
+  final String address;
+  final VoidCallback onAddressTap;
 
   @override
   Widget build(BuildContext context) {
@@ -48,17 +55,7 @@ class HeaderWithSearchBox extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       InkWell(
-                        onTap: () {
-                          // Navigate to map page
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) {
-                                return const Placeholder();
-                              },
-                            ),
-                          );
-                        },
+                        onTap: onAddressTap,
                         child: Row(
                           children: [
                             const Icon(
@@ -67,11 +64,15 @@ class HeaderWithSearchBox extends StatelessWidget {
                               size: 18,
                             ),
                             const SizedBox(width: 4),
-                            Text(
-                              'Your Address',
-                              style: TextStyle(
-                                color: Colors.white.withOpacity(0.9),
-                                fontSize: 14,
+                            Flexible(
+                              child: Text(
+                                address.isEmpty ? 'Your Address' : address,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  color: Colors.white.withOpacity(0.9),
+                                  fontSize: 14,
+                                ),
                               ),
                             ),
                           ],

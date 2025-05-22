@@ -58,7 +58,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
 
     emit(state.copyWith(
       pickedMarker: marker,
-      pickedAddress: '${p.name}, ${p.street}, ${p.locality}, ${p.country}, ${p.postalCode}',
+      pickedAddress: '${p.street}, ${p.locality}, ${p.country}',
     ));
   }
 
