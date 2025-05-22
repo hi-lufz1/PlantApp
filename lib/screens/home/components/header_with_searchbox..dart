@@ -4,10 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constants.dart';
 
 class HeaderWithSearchBox extends StatelessWidget {
-  const HeaderWithSearchBox({
-    super.key,
-    required this.size,
-  });
+  const HeaderWithSearchBox({super.key, required this.size});
 
   final Size size;
 
@@ -24,7 +21,7 @@ class HeaderWithSearchBox extends StatelessWidget {
               right: kDefaultPadding,
               bottom: 36 + kDefaultPadding,
             ),
-            height: size.height * 0.2 - 27,
+            height: size.height * 0.2 - 20,
             decoration: BoxDecoration(
               color: kPrimaryColor,
               borderRadius: const BorderRadius.only(
@@ -33,16 +30,95 @@ class HeaderWithSearchBox extends StatelessWidget {
               ),
             ),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(
-                  'Hi Uishopy!',
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Hi Uishopy!',
+                        style: Theme.of(
+                          context,
+                        ).textTheme.headlineSmall?.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
+                      const SizedBox(height: 4),
+                      InkWell(
+                        onTap: () {
+                          // Navigate to map page
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) {
+                                return const Placeholder();
+                              },
+                            ),
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.location_on,
+                              color: Colors.white,
+                              size: 18,
+                            ),
+                            const SizedBox(width: 4),
+                            Text(
+                              'Your Address',
+                              style: TextStyle(
+                                color: Colors.white.withOpacity(0.9),
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                const Spacer(),
-                Image.asset("assets/images/logo.png")
+                Stack(
+                  alignment: Alignment.bottomRight,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) {
+                              return const Placeholder();
+                            },
+                          ),
+                        );
+                      },
+                      child: const CircleAvatar(
+                        radius: 40,
+                        backgroundImage: AssetImage(
+                          'assets/images/profile.png',
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                        ),
+                        padding: const EdgeInsets.all(2),
+                        child: const Icon(
+                          Icons.camera_alt,
+                          size: 16,
+                          color: kPrimaryColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
