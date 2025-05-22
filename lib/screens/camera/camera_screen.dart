@@ -51,8 +51,8 @@ class CameraScreen extends StatelessWidget {
                   GestureDetector(
                     onTapDown: (details) {
                       context.read<CameraBloc>().add(
-                            TapToFocus(details.localPosition, constraints.biggest),
-                          );
+                        TapToFocus(details.localPosition, constraints.biggest),
+                      );
                     },
                     child: CameraPreview(state.controller),
                   ),
@@ -79,13 +79,17 @@ class CameraScreen extends StatelessWidget {
                     right: 0,
                     child: Center(
                       child: FloatingActionButton(
+                        heroTag: 'camera_button',
                         backgroundColor: Colors.white,
                         onPressed: () {
                           context.read<CameraBloc>().add(
-                                TakePicture((file) => Navigator.pop(context, file)),
-                              );
+                            TakePicture((file) => Navigator.pop(context, file)),
+                          );
                         },
-                        child: const Icon(Icons.camera_alt, color: Colors.black),
+                        child: const Icon(
+                          Icons.camera_alt,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),

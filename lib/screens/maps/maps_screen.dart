@@ -82,11 +82,13 @@ class _MapsScreenState extends State<MapsScreen> {
             children: [
               if (state.pickedAddress != null) ...[
                 FloatingActionButton.extended(
+                  heroTag: 'pickaddress_button',
                   onPressed: () => Navigator.pop(context, state.pickedAddress),
                   label: const Text("Pilih Alamat"),
                 ),
                 const SizedBox(height: 8),
                 FloatingActionButton.extended(
+                  heroTag: 'delleteaddress_button',
                   onPressed:
                       () => context.read<MapBloc>().add(ClearPickedLocation()),
                   label: const Text("Hapus Alamat"),
