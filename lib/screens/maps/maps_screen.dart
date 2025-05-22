@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:plant_app/getmap_bloc/map_bloc.dart';
-import 'package:plant_app/getmap_bloc/map_event.dart';
-import 'package:plant_app/getmap_bloc/map_state.dart';
+import 'package:plant_app/bloc/getmap_bloc/map_bloc.dart';
+import 'package:plant_app/bloc/getmap_bloc/map_event.dart';
+import 'package:plant_app/bloc/getmap_bloc/map_state.dart';
 
 class MapsScreen extends StatefulWidget {
   const MapsScreen({super.key});

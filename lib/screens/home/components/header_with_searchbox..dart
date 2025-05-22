@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -9,11 +11,15 @@ class HeaderWithSearchBox extends StatelessWidget {
     required this.size,
     required this.address,
     required this.onAddressTap,
+    required this.onCameraTap,
+    this.profileImage,
   });
 
   final Size size;
   final String address;
   final VoidCallback onAddressTap;
+  final VoidCallback onCameraTap;
+  final File? profileImage;
 
   @override
   Widget build(BuildContext context) {
@@ -85,36 +91,32 @@ class HeaderWithSearchBox extends StatelessWidget {
                   alignment: Alignment.bottomRight,
                   children: [
                     InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) {
-                              return const Placeholder();
-                            },
-                          ),
-                        );
-                      },
-                      child: const CircleAvatar(
+                      onTap: onCameraTap,
+                      child: CircleAvatar(
                         radius: 40,
-                        backgroundImage: AssetImage(
-                          'assets/images/profile.png',
-                        ),
+                        backgroundImage:
+                            profileImage != null
+                                ? FileImage(profileImage!)
+                                : const AssetImage('assets/images/profile.png')
+                                    as ImageProvider,
                       ),
                     ),
                     Positioned(
                       bottom: 0,
                       right: 0,
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        padding: const EdgeInsets.all(2),
-                        child: const Icon(
-                          Icons.camera_alt,
-                          size: 16,
-                          color: kPrimaryColor,
+                      child: GestureDetector(
+                        onTap: onCameraTap,
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white,
+                          ),
+                          padding: const EdgeInsets.all(2),
+                          child: const Icon(
+                            Icons.camera_alt,
+                            size: 16,
+                            color: kPrimaryColor,
+                          ),
                         ),
                       ),
                     ),
