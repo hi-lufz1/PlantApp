@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:plant_app/bloc/map_bloc.dart';
-import 'package:plant_app/bloc/map_event.dart';
+import 'package:plant_app/getmap_bloc/map_bloc.dart';
+import 'package:plant_app/getmap_bloc/map_event.dart';
 import 'package:plant_app/constants.dart';
 import 'package:plant_app/screens/home/components/featurred_plants.dart';
 import 'package:plant_app/screens/home/components/header_with_searchbox..dart';
